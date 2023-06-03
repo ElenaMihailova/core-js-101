@@ -23,7 +23,7 @@
  *
  */
 function getComposition(f, g) {
-  return function (x) {
+  return function composition(x) {
     return f(g(x));
   };
 }
@@ -45,7 +45,7 @@ function getComposition(f, g) {
  *
  */
 function getPowerFunction(exponent) {
-  return function (x) {
+  return function mathPower(x) {
     return x ** exponent;
   };
 }
@@ -91,7 +91,7 @@ function getPolynom(...args) {
 function memoize(func) {
   let cache;
 
-  return function () {
+  return function memoizedFunction() {
     if (cache === undefined) {
       cache = func();
     }
@@ -115,7 +115,7 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
-  return function () {
+  return function retryFunction() {
     let remainingAttempts = attempts;
     let result;
 
@@ -187,7 +187,7 @@ function logger(func, logFunc) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn, ...args1) {
-  return function (...args2) {
+  return function applyPartialArguments(...args2) {
     return fn.apply(this, args1.concat(args2));
   };
 }
@@ -212,7 +212,7 @@ function partialUsingArguments(fn, ...args1) {
 function getIdGeneratorFunction(startFrom) {
   let currentId = startFrom;
 
-  return function () {
+  return function nextId() {
     const id = currentId;
     currentId += 1;
     return id;
