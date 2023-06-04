@@ -6,7 +6,7 @@
  ******************************************************************************************* */
 
 /**
- * Returns the result of concatenation of two strings.
+ * 1. Returns the result of concatenation of two strings.
  *
  * @param {string} value1
  * @param {string} value2
@@ -18,11 +18,11 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(elem1, elem2) {
-  return elem1 + elem2;
+  return `${elem1}${elem2}`;
 }
 
 /**
- * Returns the length of given string.
+ * 2. Returns the length of given string.
  *
  * @param {string} value
  * @return {number}
@@ -33,12 +33,11 @@ function concatenateStrings(elem1, elem2) {
  *   ''      => 0
  */
 function getStringLength(elem) {
-  const array = Array.from(elem);
-  return array.length;
+  return elem.length;
 }
 
 /**
- * Returns the result of string template and given parameters firstName and lastName.
+ * 3. Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
  *
@@ -55,7 +54,7 @@ function getStringFromTemplate(firstName, lastName) {
 }
 
 /**
- * Extracts a name from template string 'Hello, First_Name Last_Name!'.
+ * 4. Extracts a name from template string 'Hello, First_Name Last_Name!'.
  *
  * @param {string} value
  * @return {string}
@@ -65,16 +64,18 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  const namePattern = /Hello, (.*?)!/;
-  const match = namePattern.exec(value);
-  if (match && match[1]) {
-    return match[1];
+  const array = value.split(',');
+  if (array[0] === 'Hello') {
+    const result = array.slice(1);
+    const end = result[0].length;
+    const newRes = result[0].slice(1, end - 1);
+    return newRes;
   }
-  return '';
+  return value;
 }
 
 /**
- * Returns a first char of the given string.
+ * 5. Returns a first char of the given string.
  *
  * @param {string} value
  * @return {string}
@@ -88,7 +89,7 @@ function getFirstChar(value) {
 }
 
 /**
- * Removes a leading and trailing whitespace characters from string.
+ * 6. Removes a leading and trailing whitespace characters from string.
  *
  * @param {string} value
  * @return {string}
@@ -103,7 +104,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
 }
 
 /**
- * Returns a string that repeated the specified number of times.
+ * 7. Returns a string that repeated the specified number of times.
  *
  * @param {string} value
  * @param {string} count
@@ -113,12 +114,10 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(value, count) {
-  return value.repeat(count);
-}
+const repeatString = (value, count) => value.repeat(count);
 
 /**
- * Remove the first occurrence of string inside another string
+ * 8. Remove the first occurrence of string inside another string
  *
  * @param {string} str
  * @param {string} value
@@ -130,15 +129,13 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  const index = str.indexOf(value);
-  if (index !== -1) {
-    return str.slice(0, index) + str.slice(index + value.length);
-  }
-  return str;
+  const start = str.indexOf(value);
+  const count = start + value.length;
+  return `${str.slice(0, start)}${str.slice(count)}`;
 }
 
 /**
- * Remove the first and last angle brackets from tag string
+ * 9. Remove the first and last angle brackets from tag string
  *
  * @param {string} str
  * @return {string}
@@ -153,7 +150,7 @@ function unbracketTag(str) {
 }
 
 /**
- * Converts all characters of the specified string into the upper case
+ * 10. Converts all characters of the specified string into the upper case
  *
  * @param {string} str
  * @return {string}
@@ -167,7 +164,7 @@ function convertToUpperCase(str) {
 }
 
 /**
- * Extracts e-mails from single string with e-mails list delimeted by semicolons
+ * 11. Extracts e-mails from single string with e-mails list delimeted by semicolons
  *
  * @param {string} str
  * @return {array}
@@ -186,7 +183,7 @@ function extractEmails(str) {
 }
 
 /**
- * Returns the string representation of rectangle with specified width and height
+ * 12. Returns the string representation of rectangle with specified width and height
  * using pseudograhic chars
  *
  * @param {number} width
